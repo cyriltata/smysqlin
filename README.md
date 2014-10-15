@@ -6,6 +6,7 @@ phpdbi
 - bash
 - PHP >= 5.3
 - mysql client
+- an empty/existing MySQL database
  
 ## installation
 
