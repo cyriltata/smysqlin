@@ -11,7 +11,8 @@ phpdbi
 ## installation
 
 No formal install process for now. Just copy the files *phpdbi.sh* and *phpdbi.php* to some directories you will remeber.
-** When creating your sql files, all statements should end with a semi colol (;)**
+
+**When creating your sql files, all statements should end with a semi colol (;)**
 
 ## in brief
 
