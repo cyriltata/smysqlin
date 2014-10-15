@@ -1,0 +1,1 @@
+DROP TABLE `cars`, `car_prices`

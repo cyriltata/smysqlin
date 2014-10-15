@@ -1,0 +1,8 @@
+#ignore auto generated files
+/sample/sql/lock.json
+
+/sample/sql/runqueries.sql
+
+
+#other stuff
+/nbproject
