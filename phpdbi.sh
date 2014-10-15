@@ -53,7 +53,7 @@ while getopts ":d:p:c:" opt; do
 		p)
 			phpfile=$OPTARG
 			;;
-        \?)
+		\?)
 			usage
 			;;
 		*)

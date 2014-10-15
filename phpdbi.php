@@ -180,12 +180,7 @@ class PHP_DBI {
 				}
 				$number = (int) basename($patchfile);
 				$patch_name = PHP_DBI_Patch::name($number);
-				$lock->patches[$patch_name] = PHP_DBI_Model::map(array(
-					'number' => $number,
-					'file' => $patchfile,
-					'rundate' => date('r'),
-					'done' => true,
-				), 'PHP_DBI_Patch');
+				$lock->patches[$patch_name] = basename($patchfile);
 			}
 		} else {
 			// this is the first time lock is being processed
@@ -193,7 +188,6 @@ class PHP_DBI {
 				'patches' => array(),
 				'created' => date('r'),
 				'directory' => $this->installDir,
-				'schema' => $this->schemaFile,
 			), 'PHP_DBI_Lock');
 			foreach ($this->patches as $patchfile) {
 				$patchfile = trim($patchfile);
@@ -202,12 +196,7 @@ class PHP_DBI {
 				}
 				$number = (int) basename($patchfile);
 				$patch_name = PHP_DBI_Patch::name($number);
-				$lock->patches[$patch_name] = PHP_DBI_Model::map(array(
-					'number' => $number,
-					'file' => $patchfile,
-					'rundate' => date('r'),
-					'done' => true,
-				), 'PHP_DBI_Patch');
+				$lock->patches[$patch_name] = basename($patchfile);
 			}
 		}
 
@@ -248,46 +237,24 @@ class PHP_DBI_Model {
 		}
 		return $self;
 	}
-
-	public static function multiMap($rows, $class = null) {
-		$r = array();
-		foreach ($rows as $data) {
-			$r[] = PHP_DBI_Model::map($data, $class);
-		}
-		return $r;
-	}
 }
 
 class PHP_DBI_Lock extends PHP_DBI_Model {
 	public $created;
 	public $directory;
-	public $schema;
 	public $patches = array();
 
 	public static function map($data, $class = null) {
 		/* @var $self PHP_DBI_Lock*/
 		$self = PHP_DBI_Model::map($data, $class);
-		$_patches = $self->patches;
-		$self->patches = array();
-		foreach ($_patches as $patch_name => $patch) {
-			$patch = (array) $patch;
-			if (is_numeric($patch_name)) {
-				$patch_name = PHP_DBI_Patch::name($patch_name);
-			}
-			$self->patches[$patch_name] = PHP_DBI_Model::map($patch, 'PHP_DBI_Patch');
-		}
+		$self->patches = (array) $self->patches;
 		return $self;
 	}
 }
 
 class PHP_DBI_Patch extends PHP_DBI_Model {
-	public $number;
-	public $file;
-	public $rundate;
-	public $done;
-
 	public static function name($number) {
-		return 'patch_' . $number;
+		return "p$number";
 	}
 }
 
