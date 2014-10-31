@@ -1,4 +1,4 @@
-# smysqlin
+# smysqlin - simple mysql install
 
 ## requirements
 
