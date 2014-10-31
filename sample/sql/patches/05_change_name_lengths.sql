@@ -1,0 +1,1 @@
+ALTER TABLE `users` CHANGE `first_name` `first_name` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, CHANGE `last_name` `last_name` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;

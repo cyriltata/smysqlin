@@ -1,20 +1,18 @@
-phpdbi
-======
+# smysqlin
 
 ## requirements
 
-- bash
-- PHP >= 5.3
+- bash 3.2.48 (OS X 10.8.2)
 - mysql client
 - an empty/existing MySQL database
  
 ## installation
 
-No formal install process for now. Just copy the files *phpdbi.sh* and *phpdbi.php* to some directories you will remeber.
+No formal install process for now. Just copy the file smysqlin.sh to where you will remember.
 
 ## in brief
 
-Some simple shell script (that requires the associated PHP file) to automate MySQL schema installs and update patches from a pre-defined structure as explained below:
+Some simple shell script to automate MySQL schema installs and update patches from a pre-defined structure as explained below:
  
 In your application, have a directory containing:
 
@@ -35,21 +33,19 @@ So a typical directory structure to work with will look like
 
 ## usage
 
- Executing the bash file requires that MySQL client and you can specify the following parameters
-  
- * -p : The absolute path to this PHP file, defaults to ./phpdbi.php
+ Executing the bash file requires that MySQL client and you must specify the following parameters
+
  * -d : The absolute path to the directory containing the above mentioned files. For exampe /var/apps/myapp/sql
  * -c : Connection parameters that will be used with MySQL client. Specify same parameters as used when running the
- 		mysql command in a string for example `-c "-h 127.0.0.1 -u root -pMyPassword -D datbasename"`
+ 		mysql command in a string for example `-c "-h 127.0.0.1 -u root -pMyPassword -D databasename"`
  	Depending on your configuration, you might be prompted to enter DB password again.
   
  **Examples:**
  ```
- ./phpdbi.sh -d /var/apps/myapp/sql -c "-h 127.0.0.1 -u root -pMyPassword -D datbasename" (assumes phpdbi.php is in pwd)
- ./phpdbi.sh -p /usr/share/php/phpdbi.php -d /var/apps/myapp/sql -c "-h 127.0.0.1 -u root -pMyPassword -D datbasename"
+ ./smysqlin.sh -d /var/apps/myapp/sql -c "-h 127.0.0.1 -u root -pMyPassword -D databasename"
  ```
- You could move *phpdbi.sh* to */usr/bin/phpbdi* with `mv ./phpdbi.sh /usr/bin/phpdbi` and run directly as a bash command 
+ You could move *smysqlin.sh* to */usr/bin/smysqlin* with `mv ./smysqlin.sh /usr/bin/smysqlin` and run directly as a bash command 
  
  ```
- phpdbi -d /var/apps/myapp/sql -c "-h 127.0.0.1 -u root -pMyPassword -D datbasename"
+ smysqlin -d /var/apps/myapp/sql -c "-h 127.0.0.1 -u root -pMyPassword -D databasename"
  ```
