@@ -55,9 +55,9 @@ lockfile=$dir/patches.lock;
 executed_patches=;
 
 # Check if DIR where to read sql files exist
-if [ ! -d $dir ]
+if [ ! -n "$dir" ] || [ ! -d $dir ];
 then
-    echo "ERROR: Directory $dir does not exist";
+    echo "ERROR: Directory '$dir' does not exist";
 	exit 1;
 fi
 
